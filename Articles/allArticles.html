@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- CSP for security -->
+<meta http-equiv="Content-Security-Policy: script-src https://cdn.example.com/scripts/; object-src 'none'">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Alatsi|Muli&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="allArticlesCSS.css" rel="stylesheet" type="text/css">
+	
+<link href="https://fonts.googleapis.com/css?family=Montserrat:900&display=swap" rel="stylesheet">
+	
+	
+<title>Destination Vacations</title>
+</head>
+
+<body id="body">
+
+<div id="favourites">
+<h3 id="favouritesTitle">My Favourite Resorts:</h3>	
+<div id="myFaves"></div>
+<div id="favListBTNDIV">
+<button id="clearFavs" class="favListBTNS"></button>
+<button id="viewFavs" class="favListBTNS"></button>
+</div>
+</div>
+
+<div id="allDestinations"></div>
+	
+<script>
+var data={"articles": [
+        {
+            "id":"article1",
+			"numberInArray":0,
+			"title":"Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "heading":"Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "paragraph1":"Etiam ornare nulla in sem pharetra, vel varius magna tempus. Praesent pulvinar eget dolor vitae elementum. Donec id velit at sem gravida tristique non vitae lorem.",
+            "image":"https://picsum.photos/640/420/?random",
+			"altText":"Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel",
+			"paragraph2":"Nulla tortor nunc, posuere eu purus eget, ultricies ullamcorper sapien. Duis viverra lectus eget dolor gravida rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce molestie, odio at mattis auctor, mauris lectus luctus risus, eget pulvinar tortor erat a est..",
+			"paragraph3":"Mauris accumsan maximus enim, eleifend consectetur turpis molestie malesuada. Proin vulputate dui non mattis venenatis. Nam ornare sapien eget nibh placerat, faucibus dapibus lacus consectetur.",
+			"list":["Vestibulum viverra viverra ullamcorper", "Aenean ut felis hendrerit, scelerisque est sed, rhoncus sem"]
+        },
+		{
+            "id":"article2",
+			"numberInArray":1,
+			"title":"Praesent bibendum nec velit a fringilla. Nulla facilisi",
+            "heading":"Nam eu varius magna, vel molestie diam",
+            "paragraph1":"Etiam ornare nulla in sem pharetra, vel varius magna tempus. Praesent pulvinar eget dolor vitae elementum. Donec id velit at sem gravida tristique non vitae lorem.",
+            "image":"https://picsum.photos/640/420/?random",
+			"altText":"Vestibulum pellentesque laoreet urna, eget dignissim lorem maximus vel",
+			"paragraph2":"Integer lobortis, magna et tempor facilisis, arcu dui finibus mauris, pellentesque fringilla massa sem non justo. Phasellus vel arcu eu eros commodo egestas at non dui. Ut ultricies quis nunc ut commodo",
+			"paragraph3":"Aenean justo urna, tempor vitae consectetur nec, ornare eget nunc. Duis ornare ipsum in quam auctor feugiat. Vestibulum sapien metus, rutrum et mattis ut, tincidunt in dolor. Praesent semper laoreet augue. Etiam lacinia hendrerit euismod.",
+			"paragraph4":"Integer lobortis, magna et tempor facilisis, arcu dui finibus mauris, pellentesque fringilla massa sem non justo. Phasellus vel arcu eu eros commodo egestas at non dui. Ut ultricies quis nunc ut commodo",
+			"paragraph5":"Aenean justo urna, tempor vitae consectetur nec, ornare eget nunc. Duis ornare ipsum in quam auctor feugiat. Vestibulum sapien metus, rutrum et mattis ut, tincidunt in dolor. Praesent semper laoreet augue. Etiam lacinia hendrerit euismod.",
+			"image2":"https://picsum.photos/640/420/?random",
+			"altText2":"Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo",
+			"paragraph6":"Morbi venenatis aliquam cursus. Sed eros elit, consequat id faucibus vel, interdum fringilla massa.",
+			"image3":"https://picsum.photos/640/420/?random",
+			"altText3":"Curabitur dictum leo bibendum lacus ultrices fringilla et quis justo",
+			"paragraph7":"Morbi venenatis aliquam cursus. Sed eros elit, consequat id faucibus vel, interdum fringilla massa."
+        },
+		{
+            "id":"article3",
+			"numberInArray":2,
+			"title":"Vestibulum posuere orci ullamcorper nisi porta, sit amet tempus nibh porta",
+            "heading":"Donec est neque, vulputate vitae magna non, aliquam semper lectus",
+            "paragraph1":"Nam sed tempus lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam sodales efficitur fermentum. Phasellus lacinia tempus odio, non mattis tellus pretium ac. Nulla facilisi. Donec tempor orci ipsum, eu euismod massa aliquet in. Fusce pretium lectus vitae dui pulvinar, vel fermentum elit porta.",
+			"paragraph2":"Donec iaculis volutpat consequat. Pellentesque et lobortis tellus. In mattis, diam a tempus fringilla, augue orci tincidunt nunc, et dictum lorem eros non ante.",
+			"paragraph3":"Donec iaculis volutpat consequat. Pellentesque et lobortis tellus. In mattis, diam a tempus fringilla, augue orci tincidunt nunc, et dictum lorem eros non ante.",
+			"paragraph4":"Cras dolor tellus, condimentum eu aliquet nec, facilisis a eros. Morbi sed tincidunt urna.",
+			"paragraph5":"Praesent feugiat rutrum lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+			"paragraph6":"Cras id condimentum dolor. Vestibulum risus leo, viverra a mi laoreet, vestibulum aliquam odio. Pellentesque aliquam placerat dolor vitae malesuada. Ut eget pretium tellus, cursus finibus ligula. Sed eros diam, porta sit amet urna eget, pretium dignissim magna. Curabitur imperdiet pharetra lectus ac venenatis.",
+			"paragraph7":"Donec at tincidunt mauris, id sagittis erat. Nunc mi nisi, pellentesque et rutrum quis, congue non elit. Nullam convallis sapien quis tellus imperdiet iaculis.",
+			"paragraph8":"Vivamus sollicitudin, diam non semper molestie, nisi nunc efficitur neque, id iaculis nibh ipsum sed quam. Etiam consequat tristique mi ac lacinia. Etiam leo nulla, faucibus et lobortis et, semper et quam. Cras vehicula quam non condimentum laoreet."
+        },
+		{
+            "id":"article4",
+			"numberInArray":3,
+			"title":"Maecenas venenatis lorem ut erat dictum, sed varius est porta",
+            "heading":"Maecenas venenatis lorem ut erat dictum, sed varius est porta",
+            "paragraph1":"Donec et fermentum elit, in aliquet massa. Suspendisse mollis tristique vulputate. Ut congue, quam quis volutpat egestas, nisl sem tempus urna, quis consequat arcu leo vitae turpis.",
+			"list":["Donec commodo ipsum id tellus cursus, vel fermentum elit venenatis", "Nullam pulvinar orci felis, eget maximus ex imperdiet accumsan" , "Nulla ut lectus at est fringilla pellentesque", "Duis elementum feugiat lacus non condimentum"],
+			"paragraph2":"Nunc auctor porttitor est, sed laoreet tortor mattis eget.",
+			"list2":["Etiam ultrices libero eget orci maximus luctus", "Sed at luctus diam, eget tincidunt arcu"],
+			"paragraph3":"Cras sodales odio et elit scelerisque, at aliquam elit facilisis. Suspendisse erat erat, egestas sed vehicula ac, finibus non velit. Curabitur fermentum iaculis velit eget semper."
+	
+        }, 
+		{
+            "id":"article5",
+			"numberInArray":4,
+			"title":"Nulla nibh erat, pharetra at ultricies nec, tincidunt luctus arcu",
+            "heading":"Nulla nibh erat, pharetra at ultricies nec, tincidunt luctus arcu",
+			"image":"https://picsum.photos/640/420/?random",
+			"altText":"Donec purus augue, lobortis et velit maximus, rutrum scelerisque ipsum",
+			"image2":"https://picsum.photos/640/420/?random",
+			"altText2":"Etiam at nisl diam",
+            "paragraph1":"Suspendisse id erat a nibh rutrum consectetur. Ut porttitor arcu id nibh pellentesque, et laoreet sapien accumsan. Phasellus quis finibus ipsum. Cras malesuada eu arcu sed laoreet. Nulla egestas ac eros vel eleifend. Nam porta ornare nisl, quis gravida dolor sagittis a."
+          
+        }
+]
+}
+
+$(document).ready(function(){
+	
+	
+	function favListCreation(){
+		$("#myFaves").empty();
+		var myFavResorts = JSON.parse(localStorage.getItem("favResort"));
+		if(myFavResorts == null){
+			myFavResorts = [];
+		}
+		var myFavResortsOutput="";
+		//add buttons to each fav resort in the list
+		for(g = 0; g< myFavResorts.length; g++){
+			var currentIDfromMyFavResorts = myFavResorts[g];
+			
+			myFavResortsOutput+="<div class='resortInFavs'><h3> <button class='heartInFavListBTN "+data.resorts[currentIDfromMyFavResorts].numberInArray +"'></button> <a href='"+data.resorts[currentIDfromMyFavResorts].url+"' target='_blank'>"+data.resorts[currentIDfromMyFavResorts].name+"</a></h3></div>";
+		}
+		
+		$("#myFaves").append(myFavResortsOutput);
+		
+		
+		$(".heartInFavListBTN").on("click",function(){
+							var classToDelete = $(this).attr("class").split(" ")[1];
+							removeFromFav(classToDelete);
+						});
+		
+
+	
+	}
+	
+	function createFavListInStorage(myClass){
+							var myFavResorts = JSON.parse(localStorage.getItem("favResort"));
+							if(myFavResorts == null){
+								myFavResorts = [];
+							}
+							//make sure its only once
+							var flag = true;
+						
+							for(f = 0; f < myFavResorts.length; f++){
+								if(myClass == myFavResorts[f]){
+									//check if it is in the list already
+									myFavResorts.splice(f,1);
+									flag=false;
+								}
+							}
+							if(flag)
+							{myFavResorts.push(myClass);}
+							
+							localStorage.setItem("favResort", JSON.stringify(myFavResorts));
+							favListCreation();
+	}
+	
+	function removeFromFav(classToDelete){
+		
+		var myFavResorts = JSON.parse(localStorage.getItem("favResort"));
+						
+				for(m = 0; m < myFavResorts.length; m++){
+					if(classToDelete == myFavResorts[m]){
+						//check if it is in the list already
+						myFavResorts.splice(m,1);
+					}
+				}
+
+				localStorage.setItem("favResort", JSON.stringify(myFavResorts));
+				favListCreation();
+	}
+	
+	favListCreation();
+	
+	//function to print the correct resorts
+	function printResorts(i){
+		var output=""
+		output+="<div class='visibleResort "+data.articles[i].numberInArray+"'>";
+		output+="<div class='mainPageIMGDIV'><img class='mainPageIMG' src=\""+data.articles[i].images[0]+"\"></div>";
+		output+="<div class='textInVisible'>"
+		output+="<h1 class='name'><a href='"+data.articles[i].url+"' target='_blank'>"+data.articles[i].name+"</a></h1>";
+		output+="<button class='favBTN "+data.articles[i].numberInArray+"'>&#10084;</button>"
+		var comfort = data.articles[i].comfortLevel;
+		var comfortOutput="";	
+		//add amount of stars according to comfort level
+		for(j=0; j<comfort ; j++){
+		comfortOutput+="&#9733;";
+		}
+		//if comfort level is lower than 5
+		var emptyStarNumbers = 5-comfort;
+		if(emptyStarNumbers>0){
+		//add an empty star to reach 5
+		for(k=0; k<emptyStarNumbers ; k++){
+		comfortOutput+="&#9734;";}}
+
+		output+="<p class='comfort'>"+comfortOutput+"</p>";
+		output+="<p class='price'>"+"Price per night: $"+data.articles[i].price+"</p>";
+		output+="<h3 class='destinationInVisible'>"+data.articles[i].destination+"</h3>";
+		output+="<p class='location'>"+data.articles[i].location+"</p>";
+		//output+="<h3 class='datesAvailableTitle'>Dates available:</h3>";
+		//output+="<p class='datesAvailable'> "+data.articles[i].startMonth+"/2020 - "+data.articles[i].endMonth+"/2020 </p></div>";
+		output+="<p class='short_description'>"+data.articles[i].short_description+"</p>";
+		output+="</div></div>"
+		
+		return output;
+				};
+									
+	
+	
+			$("#showAll").on("click", function(){
+
+				$("#allDestinations").fadeOut(100).empty();
+					var output = "";
+					for(var i in data.resorts){
+						output+= printResorts(i);
+					};
+				
+				$("#allDestinations").append(output).hide().fadeIn("slow");
+				
+				$(".favBTN").on("click", function (){	
+							var myClass = $(this).attr("class").split(" ")[1];
+							createFavListInStorage(myClass);	
+					});
+
+				
+				$(".visibleResort").draggable({ revert: true });
+				
+				$("#favourites").droppable({
+					hoverClass: "drop-hover",
+					  drop: function( event, ui) {
+						 $(ui.draggable).animate({backgroundColor:"rgba(0,0,139,0.70)"}, 250);
+						 $(ui.draggable).animate({backgroundColor:'#F2F4F3'}, 100);
+						  
+						var dorppedID = $(ui.draggable).attr("class").split(" ")[1];
+						createFavListInStorage(dorppedID);
+						
+					  }
+					});
+				
+				$(".resortInFavs").draggable({ revert: true });
+				
+				$("#body").droppable({
+					hoverClass: "drop-hover",
+					  drop: function( event, ui) {
+						 $(ui.draggable).animate({backgroundColor:"rgba(0,0,139,0.70)"}, 250);
+						 $(ui.draggable).animate({backgroundColor:'#F2F4F3'}, 100);
+						  
+						if ($(ui.draggable).hasClass("resortInFavs")){ 
+							var dorppedID = $(ui.draggable).find(".heartInFavListBTN").attr("class").split(" ")[1];
+							removeFromFav(dorppedID);
+						}
+						
+					  }
+					});
+
+			});
+	
+
+			//when clear Favourties is clicked
+			$("#clearFavs").on("click", function(){
+				localStorage.clear();
+				favListCreation();
+			});
+	
+			//when clear Favourties is clicked
+			$("#viewFavs").on("click", function(){
+				var myFavResorts = JSON.parse(localStorage.getItem("favResort"));
+					if(myFavResorts == null){
+					myFavResorts = [];
+					}
+				
+				$("#allDestinations").empty();
+				var output="";
+				for(g = 0; g< myFavResorts.length; g++){
+				var currentIDfromMyFavResorts = myFavResorts[g];
+				output+=printResorts(currentIDfromMyFavResorts);
+				}
+				$("#allDestinations").append(output);
+				
+			});
+			
+			$(".resortInFavs").draggable({ revert: true });
+				
+			$("#body").droppable({
+					hoverClass: "drop-hover",
+					  drop: function( event, ui) {
+						 $(ui.draggable).animate({backgroundColor:"rgba(0,0,139,0.70)"}, 250);
+						 $(ui.draggable).animate({backgroundColor:'#F2F4F3'}, 100);
+						  
+						if ($(ui.draggable).hasClass("resortInFavs")){ 
+							var dorppedID = $(ui.draggable).find(".heartInFavListBTN").attr("class").split(" ")[1];
+							removeFromFav(dorppedID);
+						}
+						
+					  }
+					});
+	
+			$("#resetBTN").on("click", function(){
+				$("#allDestinations").fadeOut("slow").empty();
+			});
+		});
+
+</script>
+	
+</body>
+</html>

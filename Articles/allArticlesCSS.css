@@ -1,0 +1,463 @@
+@charset "UTF-8";
+/* 
+fonts:
+<link href="https://fonts.googleapis.com/css?family=Alatsi|Muli&display=swap" rel="stylesheet">
+	Titles: font-family: 'Alatsi', sans-serif;
+	Text: font-family: 'Muli', sans-serif;
+general colors:
+
+
+*/
+
+
+body{
+	font-family: 'Muli', sans-serif;
+	background-color: #050a26;
+	background-image: url("https://www.transparenttextures.com/patterns/mooning.png"); /* texture for background of page */
+}
+
+.fa{
+	display: inline-block;
+	color: darkblue;
+	font-size: 24px;
+}
+
+
+
+
+/*HEADER*/
+header{
+	width: 100%;
+}
+
+h1{
+	font-family: 'Alatsi', sans-serif;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 0px;
+}
+
+
+/*MAIN PAGE*/
+h1 a{
+	font-family: 'Alatsi', sans-serif;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 0px;
+	text-decoration: none;
+	color: black;
+}
+
+
+
+h1 a:hover{
+	text-decoration: underline;
+}
+
+
+/*favourites*/
+
+#favourites{
+	position: fixed;
+	display: inline-block;
+	float:right;
+	width:22%;
+	margin-left: 76.5%;
+	background-color: #F2F4F3;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 50, 0.5);
+	margin-top: 20px;
+}
+
+#favouritesTitle{
+	color:darkblue;
+	padding-left: 5px;
+	text-decoration: underline;
+}
+
+.resortInFavs{
+	background-color: rgba(0,0,255,0.05);
+	padding-left: 5px;
+}
+
+.resortInFavs h3 a{
+	text-decoration: none;
+	color: black;
+}
+
+.resortInFavs h3 :hover:not(.heartInFavListBTN){
+	text-decoration: underline;
+}
+
+
+.heartInFavListBTN{
+	height:30px;
+	width:32px;
+	font-size:18px;
+	border-radius: 10px;
+	color: rgba(0,0,139,0.70);
+}
+
+.heartInFavListBTN::after{
+	content: "\002764";
+}
+
+.heartInFavListBTN:hover{
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.heartInFavListBTN:hover::after{
+	font-size:18px;
+	content: "\00D7"
+}
+
+.favListBTNS{
+	display: inline-block;
+	border-radius: 5px;
+	height: 50px;
+	font-family: 'Muli', sans-serif;
+	font-size: 100%;
+	background-color: rgba(0,0,139,0.70);
+	color: white;
+	width: 95px;
+	padding-left: 5px;
+	cursor: pointer;
+	letter-spacing: 0.5px;
+}
+
+
+#clearFavs::after{
+		content: "Clear Favourites"
+	}
+
+#viewFavs::after{
+		content: "View Favourites"
+	}
+
+#favListBTNDIV{
+	margin-left:20%;
+}
+
+/*FILTERING*/
+
+#filtering{
+	display: inline-block;
+	width:77%;
+	background-color: #F2F4F3;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 50, 0.5);
+	margin-top: 20px;
+}
+
+#destinationSeceltionDIV, #comfortSeceltionDIV, #datesDIV, #priceDIV{
+	display: inline-block;
+	margin: 15px;
+	margin-left: 2px;
+	vertical-align:top;
+}
+
+
+#activitiesDIV{
+	margin-left:15px;
+	margin-top:-35px;
+}
+
+
+ #activitiesTitle{
+	color:darkblue;
+	margin-bottom: 2px;
+}
+
+#priceTitle{
+	color:darkblue;
+	margin-bottom: 5px;
+}
+
+#maxAmount{
+	margin:2px;
+	width: 20%;
+}
+
+#minAmount{
+	margin:2px;
+	width: 20%;
+}
+
+#destinationSeceltion , #comfortSeceltion{
+	margin-top: 0px;
+	margin-left: 0px;
+	border-width:0.5px;
+	border-style: dotted;
+	border-color: darkblue;
+	height: 40px;
+	font-family: 'Muli', sans-serif;
+	font-size: 13px;
+	background-color: #F2F4F3;
+	color: darkblue;
+}
+
+#destinationSeceltion{
+	width:80%;
+}
+
+
+
+#datesDIV input[type=text] , #priceDIV input[type=text]{
+	display: inline-block;
+	margin-top: 0px;
+	border-width:0.5px;
+	border-style: dotted;
+	border-color: darkblue;
+	border-radius: 5px;
+	height: 40px;
+	font-family: 'Muli', sans-serif;
+	font-size: 13px;
+	background-color: #F2F4F3;
+	color: darkblue;
+	padding-left: 5px;
+	cursor: pointer;
+}
+
+#priceDIV input[type=text]{
+	position:inherit;
+	width:15%;
+}
+
+
+#datesDIV input[type=text]{
+	width:35%;
+	padding-right: none;
+	}
+
+#datesDIV input[type=text]::placeholder{
+	font-family: 'Muli', sans-serif;
+	font-size: 13px;
+	color: darkblue;
+}
+
+#datesDIV{
+	width:20%;
+}
+
+
+#sliderAndtext{
+	display: inline-block;
+	
+}
+
+#slider-range{
+	margin-top:10px;
+}
+
+.ui-widget.ui-widget-content{
+	border:none;
+}
+
+.ui-slider-horizontal {
+	display: inline-block;
+	height:10px;
+	width:35%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.ui-slider-handle{
+	border-width:0.5px;
+	border-style: dotted;
+	border-color: darkblue;
+	border-radius: 5px;
+	background-color: #F2F4F3 !important;
+}
+
+
+
+.ui-button, .ui-button:hover{
+	display: inline-block;
+	border-width:0.5px;
+	border-style: dotted;
+	border-color: darkblue;
+	border-radius: 5px;
+	height: 30px;
+	font-family: 'Muli', sans-serif;
+	font-size: 13px;
+	background-color: #F2F4F3;
+	color: darkblue;
+	width: 50px;
+	cursor: pointer;
+	margin: 2px;
+}
+
+.ui-state-active{
+	background-color: darkblue;
+	color: white;
+	cursor: pointer;
+
+}
+
+.BTNS{
+	margin-left: 13px;
+	display: grid;
+	width:20%;
+}
+
+#search{
+	grid-column: 1;
+}
+#showAll{
+	grid-column: 2;
+}
+#resetBTN{
+	grid-column: 3;
+}
+
+
+.filterBTNS {
+	margin: 5px;
+	border-radius: 5px;
+	height: 50px;
+	font-family: 'Alatsi', sans-serif;
+	font-size: 15px;
+	background-color: rgba(0,0,139,0.70);
+	color: white;
+	width:90%;
+	padding-left: 5px;
+	cursor: pointer;
+	letter-spacing: 0.5px;
+}
+
+
+.filterBTNS:hover{
+	background-color: #028090;
+}
+
+/*****************************************found resorts***************************************/
+
+.visibleResort{
+	background-color: #F2F4F3;
+	width: 65%;
+	padding: 25px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 50, 0.5);
+	margin:20px;
+	display: grid;
+	margin-left: 3%;
+	position:inherit;
+}
+
+
+
+.mainPageIMG{
+	width:90%;
+	margin:5px;
+	margin-top: 10px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 50, 0.5);
+	
+}
+
+.mainPageIMGDIV{
+	display: inline-block;
+	float:left;
+	grid-column:1;
+}
+
+.textInVisible{
+	padding: 6px;
+	grid-column:2;
+}
+
+
+.favBTN{
+	color: white;
+	font-size: 20px;
+	border-radius: 20px;
+	background-color:rgba(0,0,139,0.70);
+	padding:15px;
+	display: block;
+	float: right;
+}
+
+.favBTN:hover{
+	cursor: pointer;
+	color: aqua
+}
+
+
+.destinationInVisible{
+	text-shadow: 0.5px 0.5px rgba(0,0,255,0.5);
+	margin:0;
+	padding:0;
+	text-decoration: underline;
+}
+
+.location{
+	margin-top: 0px;
+}
+
+.comfort{
+	display: inline-block;
+	margin-left:20px;
+	position: relative;
+	}
+
+.price{
+	margin-top: 0px;
+	display: block;
+	width:inherit;
+	color:darkblue;
+	}
+
+.short_description{
+	margin-top: 0px;
+	display: inline-block;
+	border-radius: 5px;
+	background-color:rgba(0,0,255,0.05);
+	padding: 2px;
+}
+
+/*FOR IPAD IN LANDSCAPE MODE*/
+@media only screen 
+  and (min-device-width: 1000px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+{
+
+
+	#filtering{
+	width:77%;
+	}
+	
+	#datesDIV{
+	width:30%;
+	}
+	
+	.favListBTNS{	
+	height: 30px;
+	width: 65px;
+	}
+	
+	#clearFavs::after{
+		content: "Clear"
+	}
+	
+	#viewFavs::after{
+		content: "View"
+	}
+
+	#activitiesDIV{
+	margin-left:15px;
+	margin-top: 15px;
+	width: 500px;
+	}
+	
+	.BTNS{
+		margin-top: 10px;
+	}
+	
+	.short_description{
+		margin-top:25px;
+		margin-left: -260px;
+	}
+
+
+}
